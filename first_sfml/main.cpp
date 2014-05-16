@@ -12,7 +12,7 @@
 // Your resource files (images, sounds, fonts, ...) are also copied to your
 // application bundle. To get the path to these resource, use the helper
 // method resourcePath() from ResourcePath.hpp
-//
+//Test commit
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
