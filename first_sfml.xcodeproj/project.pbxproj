@@ -25,6 +25,7 @@
 		9E00A0A5192671BE0053B15A /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		9E00A0A7192671BE0053B15A /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		9E00A0A9192671BE0053B15A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		9E020FF819296397005731E1 /* tictactoe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tictactoe.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 				9E00A09D192671BE0053B15A /* ResourcePath.mm */,
 				9E00A09F192671BE0053B15A /* ResourcePath.hpp */,
 				9E00A0A0192671BE0053B15A /* main.cpp */,
+				9E020FF819296397005731E1 /* tictactoe.h */,
 				9E00A0A2192671BE0053B15A /* Resources */,
 				9E00A09B192671BE0053B15A /* Supporting Files */,
 			);
@@ -313,6 +315,7 @@
 				9E00A0AF192671BE0053B15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
