@@ -9,18 +9,26 @@
 #ifndef first_sfml_tictactoe_h
 #define first_sfml_tictactoe_h
 
-class ticTacToe {
-public:
-    tictactoe::ticTacToeBox* array_boxes;
+class ticTacToeBox {
+    int player;
     
-    int setBox(int x, int y, int player) {
-        
-        return 0;
-    }
+public:
+    int getPlayer();
+    int setPlayer(int player);
 };
 
-class ticTacToeBox {
-    int owner;
+
+class ticTacToe {
+    ticTacToeBox* array_boxes;
+    int player_turn;
+
+public:
+    ticTacToe();
+    int setBox(int x, int y, int player);
+    int getBox(int x, int y);
+    
 };
+
+
 
 #endif
