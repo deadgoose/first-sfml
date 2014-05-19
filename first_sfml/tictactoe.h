@@ -21,11 +21,18 @@ public:
 class ticTacToe {
     ticTacToeBox* array_boxes;
     int player_turn;
+    
+    
 
 public:
     ticTacToe();
+    
+    int getPlayerTurn();
     int setBox(int x, int y, int player);
     int getBox(int x, int y);
+    int checkWinCondition();
+    int endGame(int win);
+    
     
 };
 

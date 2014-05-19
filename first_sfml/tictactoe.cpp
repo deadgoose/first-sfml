@@ -21,21 +21,74 @@ int ticTacToeBox::setPlayer(int player) {
 
 
 
+int ticTacToe::checkWinCondition() {
+    int winning_lines[8][3] =
+    {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+        {0, 4, 8},
+        {2, 4, 6}
+    };
+    int i;
+    int sum;
+    for (i = 0; i < 8; i++) {
+        sum = this->array_boxes[winning_lines[i][0]].getPlayer() +
+        this->array_boxes[winning_lines[i][1]].getPlayer() +
+        this->array_boxes[winning_lines[i][2]].getPlayer();
+        
+        if (sum == 3) {
+            return 1;
+        } else if (sum == 6) {
+            return 2;
+        }
+    }
+    return 0;
+}
+
+int ticTacToe::endGame(int winner) {
+    
+}
+
 
 int ticTacToe::setBox(int x, int y, int player) {
+    /*If invalid return 0, else return 1*/
     ticTacToeBox* box;
+    int win;
     
     if ((x>2 || x<0) && (y>2 || y<0)) {
-        return -1;
+        return 0;
     }
     
     box = &array_boxes[x*3 + y];
     
     if (player_turn == player && box->getPlayer() == 0) {
         box->setPlayer(player);
-        return 1;
+        win = ticTacToe::checkWinCondition();
+        if (win == 0) {
+            this->player_turn = (player % 2) + 1; //2 becomes 1, 1 becomes 2
+            return 1;
+        }
+        endGame(win);
+        
+        
     }
     return 0;
+}
+
+int ticTacToe::getBox(int x, int y) {
+    
+    if ((x>2 || x<0) && (y>2 || y<0)) {
+        return -1;
+    }
+    return this->array_boxes[x*3 + y].getPlayer();
+}
+
+int ticTacToe::getPlayerTurn() {
+    return this->player_turn;
 }
 
 
@@ -45,5 +98,6 @@ ticTacToe::ticTacToe() {
     for (i = 0; i < 9; i++) {
         this->array_boxes[i/3 + i%3] = ticTacToeBox();
     }
+    this->player_turn = 1;
 }
 
