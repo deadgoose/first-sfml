@@ -8,6 +8,9 @@
 
 #ifndef first_sfml_tictactoe_h
 #define first_sfml_tictactoe_h
+#define INITIAL 0
+#define PLAYABLE 1
+#define END 2
 
 class ticTacToeBox {
     int player;
@@ -21,6 +24,9 @@ public:
 class ticTacToe {
     ticTacToeBox* array_boxes;
     int player_turn;
+    int game_state;
+    int winner;
+    int turn;
     
     
 
@@ -31,8 +37,9 @@ public:
     int setBox(int x, int y, int player);
     int getBox(int x, int y);
     int checkWinCondition();
-    int endGame(int win);
-    
+    void endGame(int win);
+    int getWinner();
+    int getTurn();
     
 };
 
