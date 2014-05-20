@@ -10,10 +10,10 @@
 #define __first_sfml__tictacbot__
 
 #include <iostream>
+#include "tictactoe.h"
 
 
 
-#endif /* defined(__first_sfml__tictacbot__) */
 
 
 class ticTacBot {
@@ -23,3 +23,5 @@ public:
     ticTacBot(int player, ticTacToe game);
     void beginPlay();
 };
+
+#endif /* defined(__first_sfml__tictacbot__) */

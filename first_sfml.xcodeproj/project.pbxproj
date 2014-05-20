@@ -66,10 +66,10 @@
 				9E00A09D192671BE0053B15A /* ResourcePath.mm */,
 				9E00A09F192671BE0053B15A /* ResourcePath.hpp */,
 				9E00A0A0192671BE0053B15A /* main.cpp */,
-				9E020FF819296397005731E1 /* tictactoe.h */,
-				5F34E79419296EF400737C00 /* tictactoe.cpp */,
 				5F34E797192AFCD500737C00 /* tictacbot.h */,
 				5F34E796192AFCD500737C00 /* tictacbot.cpp */,
+				9E020FF819296397005731E1 /* tictactoe.h */,
+				5F34E79419296EF400737C00 /* tictactoe.cpp */,
 				9E00A0A2192671BE0053B15A /* Resources */,
 				9E00A09B192671BE0053B15A /* Supporting Files */,
 			);
