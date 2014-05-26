@@ -40,6 +40,7 @@ public:
     void endGame(int win);
     int getWinner();
     int getTurn();
+    int getState();
     
 };
 

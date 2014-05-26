@@ -19,6 +19,18 @@
 class ticTacBot {
     int player;
     ticTacToe* game;
+    
+    int twoInARow();
+    int opTwoInARow();
+    int twoHelper(int player);
+    int* rotate(int* coords, int no_rotations);
+    int tryFork();
+    int center();
+    int oppositeCorner();
+    int emptyCorner();
+    int emptySide();
+    
+    void ticTacLogic();
 public:
     ticTacBot(int player, ticTacToe game);
     void beginPlay();

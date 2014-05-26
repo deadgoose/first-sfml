@@ -7,13 +7,14 @@
 //
 
 #include "tictactoe.h"
+#include <iostream>
 
 int ticTacToeBox::getPlayer() {
     return this->player;
 }
 
 int ticTacToeBox::setPlayer(int player) {
-    if (player!=0 || player!=1) {
+    if (player!=0 && player!=1) {
         return 0;
     }
     this->player = player;
@@ -102,6 +103,14 @@ int ticTacToe::getBox(int x, int y) {
 
 int ticTacToe::getPlayerTurn() {
     return this->player_turn;
+}
+
+int ticTacToe::getTurn() {
+    return this->player_turn;
+}
+
+int ticTacToe::getState() {
+    return this->game_state;
 }
 
 

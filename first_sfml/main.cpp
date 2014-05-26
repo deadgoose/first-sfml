@@ -16,6 +16,9 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include "tictactoe.h"
+#include "tictacbot.h"
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
@@ -55,6 +58,12 @@ int main(int, char const**)
 
     // Play the music
     music.play();
+    
+    //create table
+    ticTacToe* my_variable = new ticTacToe();
+    ticTacBot* my_bot = new ticTacBot(1, *my_variable);
+    my_bot->beginPlay();
+    std::cout << "still looping?\n";
 
     // Start the game loop
     while (window.isOpen())
