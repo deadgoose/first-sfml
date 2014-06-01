@@ -124,5 +124,6 @@ ticTacToe::ticTacToe() {
     this->game_state = PLAYABLE;
     this->winner = 0;
     this->turn = 0;
+    std::cout << "player turn is " << this->getTurn();
 }
 

@@ -9,10 +9,12 @@
 #include "tictacbot.h"
 #include "tictactoe.h"
 #include <cmath>
+#define PI 3.14159265
 
 ticTacBot::ticTacBot(int player, ticTacToe game) {
     this->player = player;
     this->game = &game;
+    std::cout << "\nBot is player " << this->player << "\n";
 }
 
 int ticTacBot::twoInARow() {
@@ -64,11 +66,13 @@ int ticTacBot::twoHelper(int player) {
 
 int* ticTacBot::rotate(int* coords, int no_rotations) {
     int x;
+    double angle;
     coords[0]--;
     coords[1]--;
     x = coords[0];
-    coords[0] = ((-1) * coords[1]) + 1;
-    coords[1] = x + 1;
+    angle = PI*no_rotations/2;
+    coords[0] = (int)(cos(angle) * coords[0] - sin(angle)*coords[1]) + 1;
+    coords[1] = (int)(sin(angle) * x + cos(angle)*coords[1]) + 1;
     return coords;
 }
 
@@ -128,6 +132,8 @@ void ticTacBot::ticTacLogic() {
 
 void ticTacBot::beginPlay() {
     while (game->getState() == PLAYABLE) {
+        //std::cout << "game state is playable";
+        std::cout << "getTurn() is " <<game->getTurn() << "\nthis->player is " << this->player << "\n";
         if (game->getTurn() == this->player) {
             std::cout<< "logic\n";
             ticTacLogic();
