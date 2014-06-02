@@ -132,7 +132,6 @@ void ticTacBot::ticTacLogic() {
 
 void ticTacBot::beginPlay() {
     while (game->getState() == PLAYABLE) {
-        //std::cout << "game state is playable";
         std::cout << "getTurn() is " <<game->getTurn() << "\nthis->player is " << this->player << "\n";
         if (game->getTurn() == this->player) {
             std::cout<< "logic\n";

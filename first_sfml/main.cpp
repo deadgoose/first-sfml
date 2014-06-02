@@ -22,9 +22,16 @@
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
+//void botThread(ticTacBot* bot);
+
+void botThread(ticTacBot bot) {
+    bot.beginPlay();
+}
+
 
 int main(int, char const**)
 {
+    /*
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
 
@@ -58,14 +65,16 @@ int main(int, char const**)
 
     // Play the music
     music.play();
-    
+ */   
     //create table
     ticTacToe* my_variable = new ticTacToe();
     ticTacBot* my_bot = new ticTacBot(1, *my_variable);
-    my_bot->beginPlay();
-    std::cout << "still looping?\n";
+    sf::Thread thread(&botThread, *my_bot);
+
+   thread.launch();
 
     // Start the game loop
+    /*
     while (window.isOpen())
     {
         // Process events
@@ -97,4 +106,5 @@ int main(int, char const**)
     }
 
     return EXIT_SUCCESS;
-}
+}*/
+    while (1) {}}
