@@ -41,6 +41,7 @@ public:
     int getWinner();
     int getTurn();
     int getState();
+    void outputBoard();
     
 };
 

@@ -11,9 +11,9 @@
 #include <cmath>
 #define PI 3.14159265
 
-ticTacBot::ticTacBot(int player, ticTacToe game) {
+ticTacBot::ticTacBot(int player, ticTacToe* game) {
     this->player = player;
-    this->game = &game;
+    this->game = game;
     std::cout << "\nBot is player " << this->player << "\n";
 }
 
@@ -131,8 +131,9 @@ void ticTacBot::ticTacLogic() {
 
 
 void ticTacBot::beginPlay() {
+    std::cout << "begin play! game state is " << game->getState() << "\n";
     while (game->getState() == PLAYABLE) {
-        std::cout << "getTurn() is " <<game->getTurn() << "\nthis->player is " << this->player << "\n";
+        //std::cout << "getTurn() is " <<game->getTurn() << "\nthis->player is " << this->player << "\n";
         if (game->getTurn() == this->player) {
             std::cout<< "logic\n";
             ticTacLogic();

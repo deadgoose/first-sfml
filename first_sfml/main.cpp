@@ -31,7 +31,7 @@ void botThread(ticTacBot bot) {
 
 int main(int, char const**)
 {
-    /*
+    
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
 
@@ -65,16 +65,15 @@ int main(int, char const**)
 
     // Play the music
     music.play();
- */   
+    
     //create table
     ticTacToe* my_variable = new ticTacToe();
-    ticTacBot* my_bot = new ticTacBot(1, *my_variable);
+    ticTacBot* my_bot = new ticTacBot(1, my_variable);
     sf::Thread thread(&botThread, *my_bot);
-
-   thread.launch();
+    thread.launch();
 
     // Start the game loop
-    /*
+    
     while (window.isOpen())
     {
         // Process events
@@ -89,6 +88,10 @@ int main(int, char const**)
             // Escape pressed : exit
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
+            }
+            
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
+                my_variable->outputBoard();
             }
         }
 
@@ -106,5 +109,5 @@ int main(int, char const**)
     }
 
     return EXIT_SUCCESS;
-}*/
-    while (1) {}}
+}
+

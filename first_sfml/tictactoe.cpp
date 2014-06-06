@@ -113,6 +113,17 @@ int ticTacToe::getState() {
     return this->game_state;
 }
 
+void ticTacToe::outputBoard() {
+    int i, j;
+    std::cout << "________\n";
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            std::cout << "|" << this->array_boxes[i*3 + j].getPlayer();
+        }
+        std::cout << "|\n________\n";
+    }
+}
+
 
 ticTacToe::ticTacToe() {
     int i;

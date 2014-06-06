@@ -32,7 +32,7 @@ class ticTacBot {
     
     void ticTacLogic();
 public:
-    ticTacBot(int player, ticTacToe game);
+    ticTacBot(int player, ticTacToe *game);
     void beginPlay();
 };
 
