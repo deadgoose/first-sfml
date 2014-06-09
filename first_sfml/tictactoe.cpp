@@ -8,19 +8,27 @@
 
 #include "tictactoe.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
+
+sf::Mutex tic_tac_mutex;
 
 int ticTacToeBox::getPlayer() {
     return this->player;
 }
 
 int ticTacToeBox::setPlayer(int player) {
-    if (player!=0 && player!=1) {
+    
+    if ((player!=1 && player!=2) || (this->player != 0)) {
         return 0;
     }
     this->player = player;
+    //std::cout << "input player: "<< player<< "; set box to player " << this->player << "\n";
     return 1;
 }
 
+ticTacToeBox::ticTacToeBox() {
+    this->player = 0;
+}
 
 
 int ticTacToe::checkWinCondition() {
@@ -64,36 +72,44 @@ void ticTacToe::endGame(int winner) {
 
 int ticTacToe::setBox(int x, int y, int player) {
     /*If invalid return 0, else return 1*/
+
     ticTacToeBox* box;
-    int win;
     
+    tic_tac_mutex.lock();
     if ((x>2 || x<0) && (y>2 || y<0)) {
+        tic_tac_mutex.unlock();
         return 0;
     }
     
     box = &array_boxes[x*3 + y];
-    
+    /*std::cout << "this->player turn is "<<this->player_turn<<"\n";
+    std::cout << "box->getPLayer() is "<<box->getPlayer()<<"\n";
+    std::cout << "this->game_state is "<<this->game_state<<" && PLAYABLE is " << PLAYABLE <<"\n";*/
+    //you should just have setPlayer return a value
+    //and based off of that you should update player turn etc
     if (this->player_turn == player &&
-        box->getPlayer() == 0 &&
+        box->setPlayer(player) == 1 &&
         this->game_state == PLAYABLE) {
-        
-        box->setPlayer(player);
-        win = ticTacToe::checkWinCondition();
-        if (win == 0) {
-            this->player_turn = (player % 2) + 1; //2 becomes 1, 1 becomes 2
-            if (this->player_turn == 1) {
-                this->turn++;
-            }
-            return 1;
+        //std::cout << "i'm trying to set player to " <<player<<"\n";
+
+        this->player_turn = (player % 2) + 1; //2 becomes 1, 1 becomes 2
+        if (this->player_turn == 1) {
+            this->turn++;
         }
-        endGame(win);
+        tic_tac_mutex.unlock();
+        return 1;
+
+        endGame(checkWinCondition());
+
         
         
     }
+    tic_tac_mutex.unlock();
     return 0;
 }
 
 int ticTacToe::getBox(int x, int y) {
+
     
     if ((x>2 || x<0) && (y>2 || y<0)) {
         return -1;
@@ -114,14 +130,16 @@ int ticTacToe::getState() {
 }
 
 void ticTacToe::outputBoard() {
+    tic_tac_mutex.lock();
     int i, j;
-    std::cout << "________\n";
+    std::cout <<"\n";
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             std::cout << "|" << this->array_boxes[i*3 + j].getPlayer();
         }
-        std::cout << "|\n________\n";
+        std::cout << "|\n\n";
     }
+    tic_tac_mutex.unlock();
 }
 
 

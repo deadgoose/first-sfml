@@ -24,6 +24,7 @@
 #include "ResourcePath.hpp"
 //void botThread(ticTacBot* bot);
 
+
 void botThread(ticTacBot bot) {
     bot.beginPlay();
 }
@@ -64,7 +65,7 @@ int main(int, char const**)
     }
 
     // Play the music
-    music.play();
+    //music.play();
     
     //create table
     ticTacToe* my_variable = new ticTacToe();
@@ -86,12 +87,20 @@ int main(int, char const**)
             }
 
             // Escape pressed : exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
-            }
-            
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S) {
-                my_variable->outputBoard();
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Escape) {
+                    window.close();
+                }
+                else if (event.key.code == sf::Keyboard::S) {
+                    my_variable->outputBoard();
+                    std::cout << "pressed S\n";
+                }
+                else if (event.key.code == sf::Keyboard::L) {
+                    
+                    my_variable->outputBoard();
+                    //std::cout << "pressed L, setBox, output " << my_variable->setBox(0, 0, 2) << "\n";
+                    my_variable->setBox(0, 0, 2);
+                }
             }
         }
 

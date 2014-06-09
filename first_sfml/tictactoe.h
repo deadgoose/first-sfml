@@ -18,6 +18,7 @@ class ticTacToeBox {
 public:
     int getPlayer();
     int setPlayer(int player);
+    ticTacToeBox();
 };
 
 
